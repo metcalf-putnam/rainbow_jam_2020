@@ -30,7 +30,7 @@ func _input(event):
 		attack()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var velocity = Vector2()	
 	
 	velocity.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

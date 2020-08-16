@@ -379,13 +379,15 @@ __meta__ = {
 }
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="sprites/bicep/forearm/end"]
+modulate = Color( 0.427451, 0.298039, 0.184314, 1 )
 position = Vector2( 32.0001, 10.509 )
 rotation = -1.58986
 scale = Vector2( 1, 1 )
 emitting = false
-amount = 6
-lifetime = 0.3
+amount = 9
+lifetime = 2.0
 one_shot = true
+speed_scale = 2.0
 local_coords = false
 texture = ExtResource( 4 )
 gravity = Vector2( 0, 0 )
