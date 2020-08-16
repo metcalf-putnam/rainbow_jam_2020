@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var main_piece = $solo_arm
+onready var main_piece = $solo_arm 
 
 
 func set_camera_current():
