@@ -3,7 +3,6 @@ extends KinematicBody2D
 
 export var speed = 400
 var gravity = 500
-var was_going_left = true
 var animationState : AnimationNodeStateMachinePlayback
 
 
@@ -13,7 +12,12 @@ func attack():
 	animationState.travel("attack")
 
 
+func _on_attack_hit():
+	$sprites/bicep/forearm/end/CPUParticles2D.emitting = true
+
+
 func _on_attack_end():
+	$sprites/bicep/forearm/end/CPUParticles2D.emitting = false
 	set_physics_process(true)
 
 
@@ -33,11 +37,7 @@ func _physics_process(delta):
 
 	if velocity.length() > 0:
 		animationState.travel("move")
-		if (was_going_left and velocity.x > 0):
-			scale.x = -1
-			
-		elif (not was_going_left and velocity.x < 0):
-			scale.x = -1
+		turn_towards(velocity.x)
 
 	else:
 		animationState.travel("idle")
@@ -50,5 +50,14 @@ func _physics_process(delta):
 	
 	velocity.y += gravity
 	velocity = move_and_slide(velocity) 
-	if velocity.x != 0:
-		was_going_left = velocity.x < 0
+	
+
+func turn_towards(x_direction : float):
+	var head = $sprites/bicep/forearm/end.global_position
+	var tail = $sprites/bicep.global_position
+	var pointing_towards = head - tail
+	
+	if x_direction < 0 and pointing_towards.x < 0 or x_direction > 0 and pointing_towards.x > 0:
+		return
+		
+	scale.x = -1
