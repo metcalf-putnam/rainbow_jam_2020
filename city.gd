@@ -8,4 +8,9 @@ func _on_scene_change_trigger_body_entered(body):
 
 func _ready():
 	$Camera2D.current = true
+	EventHub.connect("destruction", self, "_on_destruction")
+	
+
+func _on_destruction(damage):
+	EventHub.emit_signal("health_changed", damage)
 

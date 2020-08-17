@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://dialog/dialog_box.gd" type="Script" id=1]
+[ext_resource path="res://fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://dialog/dialog_box_root.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="DialogBox" type="Panel" parent="."]
+modulate = Color( 0.835294, 0.835294, 0.835294, 1 )
+margin_left = 40.2596
+margin_top = 477.686
+margin_right = 1068.26
+margin_bottom = 577.686
+rect_min_size = Vector2( 0, 100 )
+rect_scale = Vector2( 0.92, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="RichTextLabel" parent="DialogBox"]
+margin_left = 9.29114
+margin_top = 8.90271
+margin_right = 159.291
+margin_bottom = 48.9027
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 1 )
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="DialogBox"]
+margin_left = 189.497
+margin_top = 35.3939
+margin_right = 889.497
+margin_bottom = 85.3939
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "My text goes here. I have a [wave] lot [/wave]to say, so it may go onto two lines. It shouldn't go to three lines, though."
+text = "My text goes here. I have a  lot to say, so it may go onto two lines. It shouldn't go to three lines, though."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="DialogBox"]
+margin_left = 973.647
+margin_top = 68.8651
+margin_right = 985.647
+margin_bottom = 88.8651
+custom_fonts/font = SubResource( 3 )
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="DialogBox/Button" to="DialogBox" method="_on_Button_button_up"]

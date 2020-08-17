@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/Building_2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://environment/Building_4.png" type="Texture" id=8]
 [ext_resource path="res://environment/Background_Layer_2.png" type="Texture" id=9]
 [ext_resource path="res://city.gd" type="Script" id=10]
+[ext_resource path="res://utils/city_health.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -349,17 +350,19 @@ extents = Vector2( 113.225, 116.952 )
 [node name="city" type="Node2D"]
 script = ExtResource( 10 )
 
-[node name="Background_Layer_1" type="Sprite" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background_Layer_1" type="Sprite" parent="Background"]
 position = Vector2( 833.726, 63.75 )
 scale = Vector2( 0.378594, 0.670744 )
 texture = SubResource( 1 )
 
-[node name="Background_Layer_2" type="Sprite" parent="."]
+[node name="Background_Layer_2" type="Sprite" parent="Background"]
 position = Vector2( 834.61, 27.5297 )
 scale = Vector2( 0.369652, 0.354007 )
 texture = ExtResource( 9 )
 
-[node name="Background_Layer_3" type="Sprite" parent="."]
+[node name="Background_Layer_3" type="Sprite" parent="Background"]
 position = Vector2( 788.386, 372.03 )
 scale = Vector2( 0.35003, 0.344681 )
 texture = ExtResource( 7 )
@@ -382,8 +385,8 @@ position = Vector2( -231.698, 381.155 )
 scale = Vector2( 0.313487, 0.313487 )
 texture = ExtResource( 2 )
 
-[node name="Containers_3" type="Sprite" parent="."]
-position = Vector2( 648.841, 567.123 )
+[node name="Container" type="Sprite" parent="buildings"]
+position = Vector2( -1017.04, 438.978 )
 texture = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -409,4 +412,6 @@ shape = SubResource( 16 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1568.4, 668.431 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

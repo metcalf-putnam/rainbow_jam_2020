@@ -1,16 +1,23 @@
 extends Node
 
+# City / Town global stats
+var town_health = 50
+var wave = 1
+var max_waves = 3
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Player stats
+var main_piece setget set_main_piece, get_main_piece
+var pieces = []
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func set_main_piece(piece):
+	main_piece = piece
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func get_main_piece():
+	return main_piece
+	
+
+func get_pieces():
+	return pieces
+

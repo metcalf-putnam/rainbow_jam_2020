@@ -9,7 +9,7 @@
 radius = 47.9527
 height = 226.623
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=2]
 resource_name = "attack"
 length = 1.2
 step = 0.15
@@ -55,8 +55,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites/bicep:rotation_degrees")
 tracks/0/interp = 1
@@ -106,8 +105,7 @@ tracks/3/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "move"
+[sub_resource type="Animation" id=4]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites/bicep:rotation_degrees")
@@ -158,8 +156,7 @@ tracks/3/keys = {
 "values": [ 0.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "rest"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites/bicep:rotation_degrees")
 tracks/0/interp = 1
@@ -305,37 +302,37 @@ tracks/11/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "move"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/attack/node = SubResource( 12 )
+[sub_resource type="AnimationNodeStateMachine" id=13]
+states/attack/node = SubResource( 6 )
 states/attack/position = Vector2( 356, 149 )
-states/idle/node = SubResource( 5 )
+states/idle/node = SubResource( 7 )
 states/idle/position = Vector2( 255, 65 )
-states/move/node = SubResource( 6 )
+states/move/node = SubResource( 8 )
 states/move/position = Vector2( 452, 65 )
-transitions = [ "idle", "move", SubResource( 7 ), "move", "idle", SubResource( 8 ), "idle", "attack", SubResource( 13 ), "attack", "idle", SubResource( 14 ) ]
+transitions = [ "idle", "move", SubResource( 9 ), "move", "idle", SubResource( 10 ), "idle", "attack", SubResource( 11 ), "attack", "idle", SubResource( 12 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
 [node name="solo_arm" type="KinematicBody2D" groups=[
 "player",
@@ -382,7 +379,6 @@ __meta__ = {
 modulate = Color( 0.427451, 0.298039, 0.184314, 1 )
 position = Vector2( 32.0001, 10.509 )
 rotation = -1.58986
-scale = Vector2( 1, 1 )
 emitting = false
 amount = 9
 lifetime = 2.0
@@ -398,16 +394,16 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 11 )
-anims/idle = SubResource( 2 )
-anims/move = SubResource( 3 )
-anims/rest = SubResource( 4 )
+anims/attack = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/move = SubResource( 4 )
+anims/rest = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -1.93667, -220.907 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
+tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 10 )
+parameters/playback = SubResource( 14 )

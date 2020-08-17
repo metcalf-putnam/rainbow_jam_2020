@@ -4,7 +4,7 @@ extends KinematicBody2D
 export var speed = 400
 var gravity = 500
 var animationState : AnimationNodeStateMachinePlayback
-
+var strength := 5.5
 
 
 func attack():
@@ -14,6 +14,7 @@ func attack():
 
 func _on_attack_hit():
 	$sprites/bicep/forearm/end/CPUParticles2D.emitting = true
+	EventHub.emit_signal("destruction", strength)
 
 
 func _on_attack_end():
