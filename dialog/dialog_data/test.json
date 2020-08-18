@@ -1,3 +1,5 @@
 {
-  "dialog_1" : {"name":"Ada", "text":"A new [wave]friend[/wave], perhaps???" }
+  "dialog_1" : {"name": "Ada", "text": "whoah, a disembodied hand"},
+  "dialog_2" : {"name": "Bartholomew", "text": "[tornado]indeed[/tornado]"},
+  "dialog_3" : {"name": "Hand", "text": "Enough talking. Let's fight!"},
 }

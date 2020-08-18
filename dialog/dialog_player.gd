@@ -21,7 +21,8 @@ func start_dialog():
 
 func next_dialog():
 	current += 1
-	if current == dialog_keys.size():
+	print("size of dialog keys: ", dialog_keys.size())
+	if current >= dialog_keys.size():
 		emit_signal("dialog_finished")
 		return
 	dialog_text = dialog_keys[current].text
@@ -46,3 +47,4 @@ func load_dialog(file_path):
 func _on_ConvoTrigger_body_entered(body):
 	if body.is_in_group("player"):
 		get_node(dialog_ui).show_dialog(body, self)
+		EventHub.emit_signal("new_title", "dialog_test")

@@ -44,10 +44,10 @@ __meta__ = {
 }
 
 [node name="Name" type="RichTextLabel" parent="DialogBox"]
-margin_left = 11.6204
-margin_top = 9.6908
-margin_right = 170.912
-margin_bottom = 58.5935
+margin_left = 12.0
+margin_top = 10.0
+margin_right = 219.0
+margin_bottom = 59.0
 rect_clip_content = false
 custom_fonts/bold_font = SubResource( 1 )
 bbcode_enabled = true
@@ -58,27 +58,28 @@ __meta__ = {
 }
 
 [node name="Text" type="RichTextLabel" parent="DialogBox"]
-margin_left = 118.284
-margin_top = 32.8741
-margin_right = 518.284
-margin_bottom = 82.8741
+margin_left = 164.29
+margin_top = 38.5051
+margin_right = 439.29
+margin_bottom = 88.5051
 rect_clip_content = false
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "My text goes here. I have a [wave] lot [/wave]to say, so it may go onto two lines. "
 text = "My text goes here. I have a  lot to say, so it may go onto two lines. "
+fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="DialogBox"]
-margin_left = 515.942
-margin_top = 69.5198
-margin_right = 567.942
-margin_bottom = 96.5198
+margin_left = 517.394
+margin_top = 72.6682
+margin_right = 567.394
+margin_bottom = 95.6682
 custom_fonts/font = SubResource( 3 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="DialogBox/Button" to="DialogBox" method="_on_Button_button_up"]
+[connection signal="pressed" from="DialogBox/Button" to="DialogBox" method="_on_Button_pressed"]

@@ -1,7 +1,7 @@
 extends Node
 
 # City / Town global stats
-var town_health = 50
+var town_health = 100
 var wave = 1
 var max_waves = 3
 

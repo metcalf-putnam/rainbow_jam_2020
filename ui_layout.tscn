@@ -126,13 +126,14 @@ texture = ExtResource( 2 )
 [node name="LocationLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -56.5
+margin_left = -122.0
 margin_top = 42.0
-margin_right = 56.5
+margin_right = 118.0
 margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "crossroads_01"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
