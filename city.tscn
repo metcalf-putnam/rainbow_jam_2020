@@ -414,4 +414,9 @@ shape = SubResource( 16 )
 position = Vector2( 1568.4, 668.431 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,29 +1,34 @@
 extends KinematicBody2D
-
+class_name SoloPart
 
 export var speed = 400
 var gravity = 500
 var animationState : AnimationNodeStateMachinePlayback
-var strength := 5.5
+var strength := 1
+var particles = CPUParticles2D
 
+
+func set_particles():
+	pass
+	
 
 func attack():
 	set_physics_process(false)
 	animationState.travel("attack")
-
+	
 
 func _on_attack_hit():
-	$sprites/bicep/forearm/end/CPUParticles2D.emitting = true
+	particles.emitting = true
 	EventHub.emit_signal("destruction", strength)
 
 
 func _on_attack_end():
-	$sprites/bicep/forearm/end/CPUParticles2D.emitting = false
 	set_physics_process(true)
 
 
 func _ready():
 	animationState = $AnimationTree["parameters/playback"]
+	set_particles()
 
 
 func _input(event):
@@ -54,11 +59,4 @@ func _physics_process(_delta):
 	
 
 func turn_towards(x_direction : float):
-	var head = $sprites/bicep/forearm/end.global_position
-	var tail = $sprites/bicep.global_position
-	var pointing_towards = head - tail
-	
-	if x_direction < 0 and pointing_towards.x < 0 or x_direction > 0 and pointing_towards.x > 0:
-		return
-		
-	scale.x = -1
+	pass

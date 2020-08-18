@@ -20,13 +20,13 @@ func show_dialog(player, dialog):
 	dialog_node.connect("dialog_finished", self, "hide")
 	dialog_node.connect("dialog_finished", self, "_on_dialog_finished", [player])
 	dialog_node.start_dialog()
-	$Name.text = dialog_node.dialog_name
+	$Name.bbcode_text = "[b]" + dialog_node.dialog_name + "[/b]"
 	$Text.bbcode_text = dialog_node.dialog_text
 
 
 func _on_Button_button_up():
 	dialog_node.next_dialog()
-	$Name.text = dialog_node.dialog_name
+	$Name.bbcode_text = "[b]" + dialog_node.dialog_name + "[/b]"
 	$Text.bbcode_text = dialog_node.dialog_text
 
 

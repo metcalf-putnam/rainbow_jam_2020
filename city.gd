@@ -1,5 +1,6 @@
 extends Node2D
 
+var healing := 5
 
 func _on_scene_change_trigger_body_entered(body):
 	if body.is_in_group("player"):
@@ -12,5 +13,9 @@ func _ready():
 	
 
 func _on_destruction(damage):
-	EventHub.emit_signal("health_changed", damage)
+	EventHub.emit_signal("health_changed", -damage)
 
+
+func _on_Timer_timeout():
+	EventHub.emit_signal("health_changed", healing)
+	# TODO: add sounds
