@@ -1,11 +1,16 @@
 extends KinematicBody2D
 class_name SoloPart
 
-export var speed = 400
+var speed_multiplier = 1
+var speed
 var gravity = 500
 var animationState : AnimationNodeStateMachinePlayback
-var strength := 1
+var strength := 0.5
 var particles = CPUParticles2D
+
+
+func set_base_speed(base_speed):
+	speed = base_speed * speed_multiplier
 
 
 func set_particles():
@@ -18,7 +23,6 @@ func attack():
 	
 
 func _on_attack_hit():
-	particles.emitting = true
 	EventHub.emit_signal("destruction", strength)
 
 

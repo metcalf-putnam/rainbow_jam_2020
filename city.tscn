@@ -351,6 +351,8 @@ extents = Vector2( 113.225, 116.952 )
 script = ExtResource( 10 )
 
 [node name="Background" type="Node2D" parent="."]
+position = Vector2( 244.592, 254.17 )
+scale = Vector2( 0.35, 0.35 )
 
 [node name="Background_Layer_1" type="Sprite" parent="Background"]
 position = Vector2( 833.726, 63.75 )
@@ -358,17 +360,18 @@ scale = Vector2( 0.378594, 0.670744 )
 texture = SubResource( 1 )
 
 [node name="Background_Layer_2" type="Sprite" parent="Background"]
-position = Vector2( 834.61, 27.5297 )
+position = Vector2( 785.92, -173.677 )
 scale = Vector2( 0.369652, 0.354007 )
 texture = ExtResource( 9 )
 
 [node name="Background_Layer_3" type="Sprite" parent="Background"]
-position = Vector2( 788.386, 372.03 )
-scale = Vector2( 0.35003, 0.344681 )
+position = Vector2( 477.993, 248.06 )
+scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 7 )
 
 [node name="buildings" type="Node2D" parent="."]
-position = Vector2( 1665.88, 128.145 )
+position = Vector2( 719.957, 276.777 )
+scale = Vector2( 0.25, 0.25 )
 
 [node name="Building_1" type="Sprite" parent="buildings"]
 position = Vector2( -668.499, 133.523 )
@@ -396,27 +399,29 @@ tile_set = SubResource( 15 )
 cell_size = Vector2( 128, 128 )
 cell_quadrant_size = 128
 format = 1
-tile_data = PoolIntArray( 65522, 6, 0, 131058, 6, 0, 196594, 6, 0, 262130, 6, 0, 327666, 6, 0, 327667, 9, 0, 327668, 9, 0, 327669, 9, 0, 327670, 9, 0, 327671, 9, 0, 327672, 9, 0, 327673, 9, 0, 327674, 9, 0, 327675, 9, 0, 327676, 9, 0, 327677, 9, 0, 327678, 9, 0, 327679, 9, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 393203, 12, 0, 393204, 12, 0, 393205, 12, 0, 393206, 12, 0, 393207, 12, 0, 393208, 12, 0, 393209, 12, 0, 393210, 12, 0, 393211, 12, 0, 393212, 12, 0, 393213, 12, 0, 393214, 12, 0, 393215, 12, 0, 327680, 6, 0, 327681, 6, 0, 327682, 6, 0 )
+tile_data = PoolIntArray( -12, 6, 0, 65524, 6, 0, 131060, 6, 0, 196596, 9, 0, 196597, 9, 0, 196598, 9, 0, 196599, 9, 0, 196600, 9, 0, 196601, 9, 0, 196602, 9, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 811.599, 250.632 )
+position = Vector2( 514.33, 299.91 )
 scale = Vector2( 2.44, 2.56 )
 current = true
-zoom = Vector2( 1.5, 1.5 )
 
 [node name="scene_change_trigger" type="Area2D" parent="."]
-position = Vector2( 1880.31, 546.27 )
+position = Vector2( 1506.54, 550.046 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scene_change_trigger"]
+position = Vector2( -568.212, -247.295 )
 shape = SubResource( 16 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1568.4, 668.431 )
-
-[node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
+position = Vector2( 710.428, 379.488 )
+scale = Vector2( 0.5, 0.5 )
+speed = 125
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 8.0
 autostart = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 11 )]
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

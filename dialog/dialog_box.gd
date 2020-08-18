@@ -25,6 +25,7 @@ func show_dialog(player, dialog):
 
 
 func _on_Button_button_up():
+	print("pressed!")
 	dialog_node.next_dialog()
 	$Name.bbcode_text = "[b]" + dialog_node.dialog_name + "[/b]"
 	$Text.bbcode_text = dialog_node.dialog_text

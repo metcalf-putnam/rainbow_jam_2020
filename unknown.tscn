@@ -352,7 +352,7 @@ extents = Vector2( 61.2197, 62.8364 )
 script = ExtResource( 2 )
 
 [node name="TileMap" type="TileMap" parent="."]
-position = Vector2( -2, 0 )
+position = Vector2( 25.546, -77.2813 )
 tile_set = SubResource( 14 )
 cell_size = Vector2( 128, 128 )
 cell_quadrant_size = 128
@@ -360,22 +360,23 @@ format = 1
 tile_data = PoolIntArray( 327665, 9, 0, 327666, 9, 0, 327667, 9, 0, 327668, 9, 0, 327669, 9, 0, 327670, 9, 0, 327671, 9, 0, 327672, 9, 0, 327673, 9, 0, 327674, 9, 0, 327675, 9, 0, 327676, 9, 0, 327677, 9, 0, 327678, 3, 0, 327679, 3, 0, 262144, 3, 0, 262145, 3, 0, 262146, 3, 0, 262147, 3, 0, 262148, 3, 0, 262149, 3, 0, 262150, 3, 0, 262151, 3, 0, 262152, 3, 0, 262153, 3, 0, 262154, 3, 0, 262155, 3, 0, 262156, 3, 0, 262157, 4, 0, 393201, 12, 0, 393202, 12, 0, 393203, 12, 0, 393204, 12, 0, 393205, 12, 0, 393206, 12, 0, 393207, 12, 0, 393208, 12, 0, 393209, 12, 0, 393210, 12, 0, 393211, 12, 0, 393212, 12, 0, 393213, 12, 0, 393214, 6, 0, 393215, 6, 0, 327680, 6, 0, 327681, 6, 0, 327682, 6, 0, 327683, 6, 0, 327684, 6, 0, 327685, 6, 0, 327686, 6, 0, 327687, 6, 0, 327688, 6, 0, 327689, 6, 0, 327690, 6, 0, 327691, 6, 0, 327692, 6, 0, 327693, 7, 0 )
 
 [node name="townLabel" type="Label" parent="."]
-margin_left = 184.0
-margin_top = 368.0
-margin_right = 380.0
-margin_bottom = 399.0
+margin_left = 273.052
+margin_top = 211.317
+margin_right = 520.052
+margin_bottom = 283.317
 custom_fonts/font = SubResource( 15 )
 text = "<< town in need of destruction
 "
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="unknownLabel" type="Label" parent="."]
-margin_left = 752.0
-margin_top = 368.0
-margin_right = 948.0
-margin_bottom = 399.0
+margin_left = 623.633
+margin_top = 217.924
+margin_right = 819.633
+margin_bottom = 248.924
 custom_fonts/font = SubResource( 15 )
 text = "the unknown >>"
 __meta__ = {
@@ -390,7 +391,7 @@ position = Vector2( -958.415, 453.846 )
 shape = SubResource( 16 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 571.725, 538.166 )
+position = Vector2( 492.512, 419.139 )
 
 [node name="ConvoTrigger" type="Area2D" parent="."]
 

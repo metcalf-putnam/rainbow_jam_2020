@@ -6,13 +6,13 @@
 [ext_resource path="res://fonts/Adelle Light.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/Adelle SemiBold.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 28
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 17
 use_mipmaps = true
 use_filter = true
@@ -28,10 +28,14 @@ script = ExtResource( 3 )
 
 [node name="DialogBox" type="Panel" parent="."]
 modulate = Color( 0.835294, 0.835294, 0.835294, 1 )
-margin_left = 40.2596
-margin_top = 477.686
-margin_right = 1068.26
-margin_bottom = 577.686
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -261.54
+margin_top = -164.22
+margin_right = 310.46
+margin_bottom = -64.2203
 rect_min_size = Vector2( 0, 100 )
 rect_scale = Vector2( 0.92, 1 )
 script = ExtResource( 1 )
@@ -45,7 +49,7 @@ margin_top = 9.6908
 margin_right = 170.912
 margin_bottom = 58.5935
 rect_clip_content = false
-custom_fonts/bold_font = SubResource( 4 )
+custom_fonts/bold_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[b]Name[/b]"
 text = "Name"
@@ -54,24 +58,24 @@ __meta__ = {
 }
 
 [node name="Text" type="RichTextLabel" parent="DialogBox"]
-margin_left = 189.497
-margin_top = 35.3939
-margin_right = 889.497
-margin_bottom = 85.3939
+margin_left = 118.284
+margin_top = 32.8741
+margin_right = 518.284
+margin_bottom = 82.8741
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "My text goes here. I have a [wave] lot [/wave]to say, so it may go onto two lines. It shouldn't go to three lines, though."
-text = "My text goes here. I have a  lot to say, so it may go onto two lines. It shouldn't go to three lines, though."
+bbcode_text = "My text goes here. I have a [wave] lot [/wave]to say, so it may go onto two lines. "
+text = "My text goes here. I have a  lot to say, so it may go onto two lines. "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="DialogBox"]
-margin_left = 969.0
-margin_top = 67.0
-margin_right = 1021.0
-margin_bottom = 94.0
+margin_left = 515.942
+margin_top = 69.5198
+margin_right = 567.942
+margin_bottom = 96.5198
 custom_fonts/font = SubResource( 3 )
 text = "Next"
 __meta__ = {

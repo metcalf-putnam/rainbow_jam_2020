@@ -1,6 +1,8 @@
 extends Node2D
 
-var healing := 5
+var healing := 20
+var scene_name := "city_01"
+
 
 func _on_scene_change_trigger_body_entered(body):
 	if body.is_in_group("player"):
@@ -10,6 +12,7 @@ func _on_scene_change_trigger_body_entered(body):
 func _ready():
 	$Camera2D.current = true
 	EventHub.connect("destruction", self, "_on_destruction")
+	EventHub.emit_signal("new_title", scene_name)
 	
 
 func _on_destruction(damage):

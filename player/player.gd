@@ -1,6 +1,7 @@
 extends Node2D
 
 
+export var speed = 250
 var main_piece 
 var pieces = []
 enum Parts {arm_l, arm_r, legs, torso, head}
@@ -13,6 +14,9 @@ func _ready():
 	
 	if !main_piece:	
 		add_piece(Parts.arm_r, 0)
+		
+	for piece in pieces:
+		piece.set_base_speed(speed)
 	
 	
 func add_piece(type, value):
@@ -24,8 +28,8 @@ func add_piece(type, value):
 	match type:
 		Parts.arm_r:
 			if value == 0:
-				new_piece = preload("res://solo_parts/solo_arm.tscn").instance()
-	
+				new_piece = preload("res://solo_parts/solo_arm/solo_arm.tscn").instance()
+				new_piece.set_base_speed(speed)
 	if new_piece:
 		add_child(new_piece)
 	if !main_piece:
