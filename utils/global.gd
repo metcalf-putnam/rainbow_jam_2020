@@ -1,9 +1,10 @@
 extends Node
 
+#var scene_mode = 
+
+
 # City / Town global stats
 var town_health = 100
-var wave = 1
-var max_waves = 3
 
 # Player stats
 var main_piece setget set_main_piece, get_main_piece

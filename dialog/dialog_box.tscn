@@ -1,41 +1,33 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://dialog/dialog_box.gd" type="Script" id=1]
 [ext_resource path="res://fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://dialog/dialog_box_root.gd" type="Script" id=3]
 [ext_resource path="res://fonts/Adelle Light.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://fonts/Adelle SemiBold.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://UI_layout2_guides.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 28
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 17
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource( 3 )
 
-[node name="DialogBox" type="Panel" parent="."]
+[node name="DialogBox" type="Control" parent="."]
 modulate = Color( 0.835294, 0.835294, 0.835294, 1 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -261.54
-margin_top = -164.22
-margin_right = 310.46
-margin_bottom = -64.2203
+margin_left = -256.189
+margin_top = -113.679
+margin_right = 315.811
+margin_bottom = -13.6787
 rect_min_size = Vector2( 0, 100 )
 rect_scale = Vector2( 0.92, 1 )
 script = ExtResource( 1 )
@@ -43,43 +35,63 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="RichTextLabel" parent="DialogBox"]
-margin_left = 12.0
-margin_top = 10.0
-margin_right = 219.0
-margin_bottom = 59.0
-rect_clip_content = false
-custom_fonts/bold_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "[b]Name[/b]"
-text = "Name"
+[node name="h" type="HBoxContainer" parent="DialogBox"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -252.0
+margin_top = -50.0
+margin_right = 252.0
+rect_min_size = Vector2( 500, 0 )
+mouse_filter = 2
+custom_constants/separation = 50
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text" type="RichTextLabel" parent="DialogBox"]
-margin_left = 164.29
-margin_top = 38.5051
-margin_right = 439.29
-margin_bottom = 88.5051
+[node name="Text" type="RichTextLabel" parent="DialogBox/h"]
+margin_left = 2.0
+margin_right = 402.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 400, 0 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 0.996078, 0.996078, 1 )
 bbcode_enabled = true
-bbcode_text = "My text goes here. I have a [wave] lot [/wave]to say, so it may go onto two lines. "
-text = "My text goes here. I have a  lot to say, so it may go onto two lines. "
+bbcode_text = "[tornado radius = .5 freq = .5]ADA:    My text goes here. I have a lot [/tornado]"
+visible_characters = 50
+text = "ADA:    My text goes here. I have a lot "
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="DialogBox"]
-margin_left = 517.394
-margin_top = 72.6682
-margin_right = 567.394
-margin_bottom = 95.6682
-custom_fonts/font = SubResource( 3 )
+[node name="Button" type="Button" parent="DialogBox/h"]
+margin_left = 452.0
+margin_right = 502.0
+margin_bottom = 23.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="DialogBox/Button" to="DialogBox" method="_on_Button_pressed"]
+
+[node name="Timer" type="Timer" parent="DialogBox"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogBox"]
+
+[node name="Tween" type="Tween" parent="DialogBox"]
+
+[node name="UI_layout2_guides" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.270588 )
+position = Vector2( 511.772, 299.772 )
+scale = Vector2( 0.24, 0.24 )
+texture = ExtResource( 6 )
+[connection signal="pressed" from="DialogBox/h/Button" to="DialogBox" method="_on_Button_pressed"]
+[connection signal="timeout" from="DialogBox/Timer" to="DialogBox" method="_on_Timer_timeout"]

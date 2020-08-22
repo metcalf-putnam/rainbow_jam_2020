@@ -1,7 +1,6 @@
 extends Node
 
 export(String, FILE, "*.json") var dialog_file
-export(NodePath) var dialog_ui
 
 var dialog_keys = []
 var dialog_name = ""
@@ -21,7 +20,6 @@ func start_dialog():
 
 func next_dialog():
 	current += 1
-	print("size of dialog keys: ", dialog_keys.size())
 	if current >= dialog_keys.size():
 		emit_signal("dialog_finished")
 		return
@@ -46,5 +44,5 @@ func load_dialog(file_path):
 
 func _on_ConvoTrigger_body_entered(body):
 	if body.is_in_group("player"):
-		get_node(dialog_ui).show_dialog(body, self)
+		EventHub.emit_signal("dialogue_started", body, self)
 		EventHub.emit_signal("new_title", "dialog_test")

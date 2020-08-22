@@ -2,6 +2,8 @@ extends Node2D
 
 
 export var speed = 250
+export var jump_speed = 500
+export var gravity = 980
 var main_piece 
 var pieces = []
 enum Parts {arm_l, arm_r, legs, torso, head}
@@ -16,7 +18,7 @@ func _ready():
 		add_piece(Parts.arm_r, 0)
 		
 	for piece in pieces:
-		piece.set_base_speed(speed)
+		piece.set_base_speed(speed, jump_speed, gravity)
 	
 	
 func add_piece(type, value):
@@ -29,7 +31,7 @@ func add_piece(type, value):
 		Parts.arm_r:
 			if value == 0:
 				new_piece = preload("res://solo_parts/solo_arm/solo_arm.tscn").instance()
-				new_piece.set_base_speed(speed)
+				new_piece.set_base_speed(speed, jump_speed, gravity)
 	if new_piece:
 		add_child(new_piece)
 	if !main_piece:
@@ -38,5 +40,5 @@ func add_piece(type, value):
 
 
 func set_camera_current():
-	main_piece.get_node("Camera2D").current = true
+	main_piece.set_camera_current(true)
 
