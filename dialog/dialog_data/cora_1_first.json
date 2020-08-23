@@ -1,0 +1,8 @@
+{
+  "1" : {"name": "Voice from above", "text": "stay away!"},
+  "2" : {"name": "ada", "text": "did you do this?"},
+  "3" : {"name": "Voice from above", "text": "get away from me!"},
+  "4" : {"name": "ada", "text": "good, you should be afraid!"}, 
+  "5" : {"name": "Voice from above", "text": "I don't want you here!"}, 
+  "6" : {"name": "ada", "text": "try to stop me then"}, 
+}

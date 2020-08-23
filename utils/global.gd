@@ -1,7 +1,6 @@
 extends Node
 
-#var scene_mode = 
-
+var cora_met_in_present_form := false
 
 # City / Town global stats
 var town_health = 100

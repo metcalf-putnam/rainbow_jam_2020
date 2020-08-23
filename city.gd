@@ -1,7 +1,7 @@
 extends Node2D
-
+class_name City
 var healing := 20
-var scene_name := "city_01"
+var scene_name := "city"
 
 
 func _on_scene_change_trigger_body_entered(body):
@@ -22,3 +22,4 @@ func _on_destruction(damage):
 func _on_Timer_timeout():
 	EventHub.emit_signal("health_changed", healing)
 	# TODO: add sounds
+

@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "City",
+"language": "GDScript",
+"path": "res://city.gd"
+}, {
+"base": "Node",
+"class": "DialogPlayer",
+"language": "GDScript",
+"path": "res://dialog/dialog_player.gd"
+}, {
 "base": "Area2D",
 "class": "Memory",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://solo_parts/solo_part.gd"
 } ]
 _global_script_class_icons={
+"City": "",
+"DialogPlayer": "",
 "Memory": "",
 "SoloPart": ""
 }
@@ -27,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="RainbowJam2020"
-run/main_scene="res://unknown.tscn"
+run/main_scene="res://stages/unknown_stage_1.tscn"
 config/icon="res://icon.png"
 
 [autoload]

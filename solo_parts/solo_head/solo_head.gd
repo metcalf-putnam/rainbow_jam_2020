@@ -23,16 +23,26 @@ func get_facing():
 	var tail = $sprites.global_position
 	return head - tail
 
+
+func jump():
+	if !is_active:
+		return
+	animationState.travel("jump")
+	var omg = OMG.instance()
+	get_tree().get_root().add_child(omg)
+	omg.global_position = global_position
+	omg.set_downwards()
+
 	
 func attack():
 	if !is_active:
 		return
+	animationState.travel("attack")
 	var omg = OMG.instance()
 	get_tree().get_root().add_child(omg)
 	omg.global_position = $sprites/Sprite/Mouth.global_position
 	var direction = get_facing().x
 	omg.set_direction(direction)
-	print("attack!")
 	
 
 func _on_enemy_hit():

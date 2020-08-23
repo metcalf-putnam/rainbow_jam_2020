@@ -6,8 +6,8 @@ const t_PREFIX = "[center]"
 const t_SUFFIX = "[/center]"
 const dt_PREFIX = "[center][tornado radius = .5 freq = .5]"
 const dt_SUFFIX = "[/tornado][/center]"
-enum Mode {DIALOGUE, THOUGHT, DEEPTHOUGHT}
-var mode = Mode.DIALOGUE
+enum Mode {DIALOGUE, THOUGHT, DEEPTHOUGHT, NONE}
+var mode = Mode.NONE
 var t_text_speed := 10 # characters per second
 var dt_text_speed := 7
 var thought_wait_time = 3
@@ -27,23 +27,25 @@ func _ready():
 
 func _set_dark_theme():
 	$h/Text.modulate = Color(1, 1, 1)
-	$h/Text.clear()
+	reset_text_label()
 
 
 func _set_normal_theme():
 	$h/Text.modulate = Color(0, 0, 0)
-	$h/Text.clear()
+	reset_text_label()
 
 
 func reset_text_label():
-	$Tween.stop_all()
+	print("resetting")
 	$Timer.stop()
+	$Tween.stop_all()
 	$h/Text.percent_visible = 0
 	$h/Text.clear()
 	$h/Text.modulate.a = 1
 
 
 func show_thought(thought : String):
+	print("showing thought")
 	reset_text_label()
 	mode = Mode.THOUGHT
 	$h/Button.hide()
@@ -54,6 +56,8 @@ func show_thought(thought : String):
 
 
 func show_deep_thought(thought : String):
+	print("showing deep thought")
+	EventHub.emit_signal("change_player_active_state", false)
 	reset_text_label()
 	mode = Mode.DEEPTHOUGHT
 	$h/Button.hide()
@@ -62,8 +66,10 @@ func show_deep_thought(thought : String):
 	show()
 
 
-func show_dialog(player, dialog):
+func show_dialog(dialog):
+	print("showing dialogue")
 	reset_text_label()
+	EventHub.emit_signal("change_player_active_state", false)
 	mode = Mode.DIALOGUE
 	show()
 	$h/Button.show()
@@ -74,23 +80,19 @@ func show_dialog(player, dialog):
 			dialog_node.start_dialog()
 			break
 			return
-	dialog_node.connect("dialog_started", player, "set_active", [false])
-	dialog_node.connect("dialog_finished", player, "set_active", [true])
 	dialog_node.connect("dialog_finished", self, "hide")
-	dialog_node.connect("dialog_finished", self, "_on_dialog_finished", [player])
+	dialog_node.connect("dialog_finished", self, "_on_dialog_finished")
 	dialog_node.start_dialog()
 	_format_dialog()
 
 
-func _on_dialog_finished(player):
-	dialog_node.disconnect("dialog_started", player, "set_active")
-	dialog_node.disconnect("dialog_finished", player, "set_active")
+func _on_dialog_finished():
+	EventHub.emit_signal("change_player_active_state", true)
 	dialog_node.disconnect("dialog_finished", self, "hide")
 	dialog_node.disconnect("dialog_finished", self, "_on_dialog_finished")
 
 
 func _on_Button_pressed():
-	print("pressed!")
 	if $Tween.is_active():
 		$Tween.stop_all()
 		$h/Text.percent_visible = 1
@@ -110,8 +112,6 @@ func _on_Timer_timeout():
 	end_color.a = 0
 	$Tween.interpolate_property($h/Text, "modulate", $h/Text.modulate, end_color, 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
-	yield($Tween, "tween_completed")
-	hide()
 
 
 func _input(event):
@@ -126,8 +126,10 @@ func _input(event):
 	if $Tween.is_active():
 		$Tween.stop_all()
 		$h/Text.percent_visible = 1	
+		print("making visible")
 	else:
 		_end_deep_thought()
+		mode = Mode.NONE
 
 
 func _end_deep_thought():
@@ -140,23 +142,20 @@ func _end_deep_thought():
 	EventHub.emit_signal("change_player_active_state", true)
 	$Timer.stop()
 	hide()
-	mode = Mode.DIALOGUE
+	mode = Mode.NONE
 
 
 func animate_text(start_vis, end_vis):
-	print("end_vis: ", end_vis)
 	var speed = t_text_speed
 	if mode == Mode.DEEPTHOUGHT:
 		speed = dt_text_speed
 		yield(get_tree().create_timer(.5), "timeout")
-		print("end deepthought primer timer")
 	var duration = (end_vis - start_vis) / speed
-	print(duration)
 	if mode == Mode.THOUGHT:
+		print("starting timer for: ", str(thought_wait_time + duration))
 		$Timer.start(thought_wait_time + duration)
+		print($Timer.get_time_left())
 	var tween = get_node("Tween")
 	tween.interpolate_property($h/Text, "visible_characters", 
 			start_vis, end_vis, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	print("about to start tween")
 	tween.start()
-	print("started tween")

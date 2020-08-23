@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://dialog/dialog_player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 61.2197, 123.503 )
+
+[node name="ConvoTest" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -5.60297, -123.275 )
+shape = SubResource( 1 )
+
+[node name="DialogPlayer" parent="." instance=ExtResource( 2 )]
+dialog_file = "res://dialog/dialog_data/test.json"
+[connection signal="body_entered" from="." to="DialogPlayer" method="_on_ConvoTrigger_body_entered"]

@@ -3,7 +3,7 @@
 [ext_resource path="res://dialog/deep_thought_trigger.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.15051, 3.94977 )
+extents = Vector2( 24.2531, 74.7579 )
 
 [node name="DeepThoughtTrigger" type="Area2D"]
 script = ExtResource( 1 )

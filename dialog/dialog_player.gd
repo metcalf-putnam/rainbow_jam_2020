@@ -1,4 +1,5 @@
 extends Node
+class_name DialogPlayer
 
 export(String, FILE, "*.json") var dialog_file
 
@@ -12,6 +13,7 @@ signal dialog_finished
 
 func start_dialog():
 	emit_signal("dialog_started")
+	print("kk starting dialogue")
 	current = 0
 	index_dialog()
 	dialog_text = dialog_keys[current].text
@@ -44,5 +46,5 @@ func load_dialog(file_path):
 
 func _on_ConvoTrigger_body_entered(body):
 	if body.is_in_group("player"):
-		EventHub.emit_signal("dialogue_started", body, self)
+		EventHub.emit_signal("dialogue_started", self)
 		EventHub.emit_signal("new_title", "dialog_test")

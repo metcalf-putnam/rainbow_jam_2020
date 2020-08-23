@@ -6,7 +6,7 @@
 [ext_resource path="res://tilesets/tileset.png" type="Texture" id=10]
 [ext_resource path="res://tilesets/_Spritesheet_Tileset.png" type="Texture" id=11]
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 64.522, 2.83961 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -349,7 +349,7 @@ scale = Vector2( 0.93397, 0.891991 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 755.179, 288.738 )
-shape = SubResource( 17 )
+shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
@@ -363,7 +363,7 @@ scale = Vector2( 0.93397, 0.891991 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2( 758.582, 177.089 )
-shape = SubResource( 17 )
+shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D2"]
@@ -377,7 +377,7 @@ scale = Vector2( 0.93397, 0.891991 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2( 752.91, -42.6448 )
-shape = SubResource( 17 )
+shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D3"]
@@ -391,7 +391,7 @@ scale = Vector2( 0.93397, 0.891991 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
 position = Vector2( 751.776, 48.8121 )
-shape = SubResource( 17 )
+shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D4"]

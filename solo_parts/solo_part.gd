@@ -34,8 +34,6 @@ func set_particles():
 func attack():
 	if !is_active:
 		return
-	set_physics_process(false)
-	print("physics off")
 	animationState.travel("attack")
 
 
@@ -44,7 +42,7 @@ func _on_attack_hit():
 
 
 func _on_attack_end():
-	set_physics_process(true)
+	pass
 
 
 func set_camera_current(boolean):
@@ -59,8 +57,14 @@ func _ready():
 
 
 func _input(event):
-	if event.is_action_pressed("ui_select") and is_on_floor():
+	if event.is_action_pressed("ui_select"):
 		attack()
+	if event.is_action_pressed("ui_up"):
+		jump()
+
+
+func jump():
+	pass
 
 
 func _physics_process(delta):
@@ -93,17 +97,17 @@ func get_direction():
 	if !is_active:
 		return Vector2()
 	var x_dir 
-	if animationState.get_current_node() == "landing":
-		x_dir = 0
-	else:
-		x_dir = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+
+	x_dir = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 		
 	return Vector2(x_dir, -1 if is_on_floor() and Input.is_action_just_pressed("ui_up") else 0)
 
 
 func get_new_animation():
 	var animation_new = " "
-	if is_on_floor():
+	if Input.is_action_pressed("ui_accept") and is_active:
+		animation_new = "attack"
+	elif is_on_floor():
 		animation_new = "move" if abs(_velocity.x) > 0.1 else "idle"
 	else:
 		animation_new = "falling" if _velocity.y > 0 else "jump"
