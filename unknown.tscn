@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://unknown.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://tiles/blank.png" type="Texture" id=4]
 [ext_resource path="res://environment/the_unknown/Asset_UnknownGroundShimmer.png" type="Texture" id=5]
 [ext_resource path="res://tilesets/_Spritesheet_Tileset.png" type="Texture" id=6]
-[ext_resource path="res://player/arm_tentacle/arm_tentacle.tscn" type="PackedScene" id=7]
 [ext_resource path="res://environment/the_unknown/Asset_UnknownSky.png" type="Texture" id=8]
 [ext_resource path="res://environment/the_unknown/Asset_UnknownPebbles.png" type="Texture" id=9]
 [ext_resource path="res://environment/the_unknown/Asset_UnknownGrass.png" type="Texture" id=10]
@@ -15,7 +14,6 @@
 [ext_resource path="res://environment/the_unknown/Asset_UnknownLight (temporary).png" type="Texture" id=13]
 [ext_resource path="res://tiles/background.png" type="Texture" id=14]
 [ext_resource path="res://tiles/background2.png" type="Texture" id=15]
-[ext_resource path="res://solo_parts/solo_tentacle/solo_tentacle.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 32, 96, 32, 96, 96, 0, 96 )
@@ -662,11 +660,5 @@ shape = SubResource( 23 )
 position = Vector2( 137.948, 30.9194 )
 scale = Vector2( 6.28, 1 )
 texture = ExtResource( 14 )
-
-[node name="arm_tentacle" parent="." instance=ExtResource( 7 )]
-position = Vector2( 155.847, 467.535 )
-
-[node name="solo_part" parent="." instance=ExtResource( 16 )]
-position = Vector2( 384.571, 396.899 )
 [connection signal="body_entered" from="city_scene_trigger" to="." method="_on_city_scene_trigger_body_entered"]
 [connection signal="body_entered" from="CrossroadsTrigger" to="." method="_on_CrossroadsTrigger_body_entered"]

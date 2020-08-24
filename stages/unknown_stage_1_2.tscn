@@ -5,7 +5,7 @@
 [ext_resource path="res://solo_parts/solo_head/solo_head.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 28.5434, 25.3338 )
+extents = Vector2( 17.3014, 25.3338 )
 
 [node name="unknown_stage_1_2" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -14,11 +14,11 @@ script = ExtResource( 1 )
 position = Vector2( 1751.65, 494.113 )
 scale = Vector2( -1, 1 )
 
-[node name="MiniGameTrigger" type="Area2D" parent="." index="7"]
+[node name="ConvoTrigger" type="Area2D" parent="." index="7"]
 position = Vector2( 1509.65, 431.875 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MiniGameTrigger" index="0"]
-position = Vector2( 93.9474, -51.1359 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConvoTrigger" index="0"]
+position = Vector2( 28.8446, -48.891 )
 scale = Vector2( 1.99128, 6.49102 )
 shape = SubResource( 1 )
-[connection signal="body_entered" from="MiniGameTrigger" to="." method="_on_MiniGameTrigger_body_entered"]
+[connection signal="body_exited" from="ConvoTrigger" to="." method="_on_ConvoTrigger_body_exited"]

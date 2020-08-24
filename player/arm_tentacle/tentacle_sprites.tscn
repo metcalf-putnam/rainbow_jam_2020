@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle3.png" type="Texture" id=1]
+[ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle1 (base_toplayer).png" type="Texture" id=2]
+[ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle2.png" type="Texture" id=3]
+[ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle4.png" type="Texture" id=4]
+[ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle5.png" type="Texture" id=5]
+[ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle6 (tip_bottomlayer).png" type="Texture" id=6]
+
+[node name="sprites" type="Node2D"]
+position = Vector2( -135.141, -32.785 )
+rotation = 0.02835
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 277.076, -24.8296 )
+rotation = 1.31786
+scale = Vector2( 1, 1 )
+texture = ExtResource( 6 )
+offset = Vector2( -1.00029, -24.1068 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 202.487, 18.4337 )
+rotation = 1.42639
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+offset = Vector2( -6.02674, -27.1017 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 151.588, -2.48593 )
+rotation = 1.17094
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+offset = Vector2( 6.08595, -9.14109 )
+
+[node name="base" type="Sprite" parent="."]
+position = Vector2( 0.386969, -2.38124 )
+rotation = 1.81915
+texture = ExtResource( 2 )
+offset = Vector2( -2.99392, -38.3766 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="2" type="Sprite" parent="base"]
+position = Vector2( -23.7768, -67.9455 )
+rotation = -0.420419
+texture = ExtResource( 3 )
+offset = Vector2( 6.429, -19.6286 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="3" type="Sprite" parent="base/2"]
+position = Vector2( 3.03847, -33.3557 )
+rotation = -0.297885
+texture = ExtResource( 1 )
+offset = Vector2( 8.23842, -19.0435 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="base/2/3"]
+position = Vector2( 28.8689, -37.0565 )
+rotation = 0.0700966
+remote_path = NodePath("../../../../Sprite")
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="base/2/3/RemoteTransform2D"]
+position = Vector2( 39.0835, -38.7401 )
+rotation = 0.255443
+remote_path = NodePath("../../../../../Sprite2")
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="base/2/3/RemoteTransform2D/RemoteTransform2D"]
+position = Vector2( -32.0789, -80.039 )
+rotation = -0.108527
+remote_path = NodePath("../../../../../../Sprite3")
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="Position2D" type="Position2D" parent="base/2/3/RemoteTransform2D/RemoteTransform2D/RemoteTransform2D"]
+position = Vector2( -1.05361, -54.9613 )
+rotation = 0.27843

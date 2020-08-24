@@ -19,7 +19,9 @@ const FLOOR_DETECT_DISTANCE = 20.0
 
 
 func set_base_speed(base_speed, base_jump_speed, gravity_base):
+	print(jump_multiplier)
 	speed = Vector2(base_speed * speed_multiplier, base_jump_speed * jump_multiplier)
+	print("speed: ", speed)
 	gravity = gravity_base
 
 

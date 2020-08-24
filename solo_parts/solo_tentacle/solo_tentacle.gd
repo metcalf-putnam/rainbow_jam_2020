@@ -1,20 +1,18 @@
 extends SoloPart
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	set_physics_process(false)
-	$AnimationPlayer.play("jump")
+	speed_multiplier = 1
+	jump_multiplier = .1
+	._ready()
+
+
+func turn_towards(x_direction : float):
+	var head = $sprites/base/sec/third/r_fourth/r_fifth/r_tip/end.global_position
+	var tail = $sprites.global_position
+	var pointing_towards = head - tail
 	
-	
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	if x_direction < 0 and pointing_towards.x < 0 or x_direction > 0 and pointing_towards.x > 0:
+		return
+		
+	scale.x = -1

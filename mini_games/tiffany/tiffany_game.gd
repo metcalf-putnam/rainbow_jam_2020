@@ -9,19 +9,12 @@ func _ready():
 	EventHub.emit_signal("memory_scene")
 	EventHub.emit_signal("new_title", scene_name)
 	EventHub.connect("memory_destroyed", self, "_on_memory_destroyed")
-	EventHub.connect("deep_thought_finished", self, "_on_deep_thought_finished")
 	rng = RandomNumberGenerator.new()
 	create_memory()
 
 
 func _on_memory_destroyed():
-	EventHub.emit_signal("deep_thought_started", "a deep thought might go here")
-	$Timer.stop()
-
-
-func _on_deep_thought_finished():
-	create_memory()
-	$Timer.start()
+	EventHub.emit_signal("thought_started", "a thought might go here")
 
 
 func _on_Timer_timeout():

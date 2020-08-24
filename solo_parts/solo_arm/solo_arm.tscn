@@ -1238,7 +1238,7 @@ __meta__ = {
 
 [node name="index_base" type="Sprite" parent="sprites/palm"]
 position = Vector2( 47.3782, 252.494 )
-rotation = -0.351145
+rotation = 0.229591
 texture = ExtResource( 4 )
 offset = Vector2( -2.19501, 64.7996 )
 __meta__ = {
@@ -1247,7 +1247,7 @@ __meta__ = {
 
 [node name="index_center" type="Sprite" parent="sprites/palm/index_base"]
 position = Vector2( -0.308594, 138.944 )
-rotation = 0.486027
+rotation = -0.000836254
 texture = ExtResource( 5 )
 offset = Vector2( -2.17401, 68.6114 )
 __meta__ = {
@@ -1256,7 +1256,7 @@ __meta__ = {
 
 [node name="index_tip" type="Sprite" parent="sprites/palm/index_base/index_center"]
 position = Vector2( -9.70154, 105.937 )
-rotation = 0.5453
+rotation = 0.042
 texture = ExtResource( 6 )
 offset = Vector2( 2.71863, 32.6847 )
 __meta__ = {

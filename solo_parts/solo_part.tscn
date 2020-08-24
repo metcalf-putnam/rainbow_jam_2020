@@ -3,7 +3,7 @@
 [ext_resource path="res://solo_parts/solo_part.gd" type="Script" id=1]
 [ext_resource path="res://solo_parts/Camera2D.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "attack"
 length = 1.2
 step = 0.15
@@ -25,22 +25,22 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "falling"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "jump"
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "landing"
 length = 0.5
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 loop = true
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites:position")
 tracks/0/interp = 1
@@ -66,13 +66,13 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "falling"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "hit"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
@@ -90,7 +90,6 @@ animation = "move"
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
-switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -110,17 +109,17 @@ auto_advance = true
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=23]
-states/attack/node = SubResource( 9 )
+[sub_resource type="AnimationNodeStateMachine" id=25]
+states/attack/node = SubResource( 8 )
 states/attack/position = Vector2( 356, 149 )
-states/falling/node = SubResource( 10 )
+states/falling/node = SubResource( 9 )
 states/falling/position = Vector2( 83, 128 )
-states/hit/node = SubResource( 25 )
+states/hit/node = SubResource( 10 )
 states/hit/position = Vector2( 270.362, -34.3099 )
 states/idle/node = SubResource( 11 )
 states/idle/position = Vector2( 255, 65 )
@@ -130,11 +129,11 @@ states/landing/node = SubResource( 13 )
 states/landing/position = Vector2( 97, 39 )
 states/move/node = SubResource( 14 )
 states/move/position = Vector2( 452, 65 )
-transitions = [ "idle", "move", SubResource( 15 ), "move", "idle", SubResource( 16 ), "idle", "attack", SubResource( 17 ), "attack", "idle", SubResource( 18 ), "idle", "jump", SubResource( 19 ), "jump", "falling", SubResource( 20 ), "falling", "landing", SubResource( 21 ), "landing", "idle", SubResource( 22 ), "idle", "hit", SubResource( 26 ), "hit", "idle", SubResource( 27 ) ]
+transitions = [ "idle", "move", SubResource( 15 ), "move", "idle", SubResource( 16 ), "idle", "attack", SubResource( 17 ), "attack", "idle", SubResource( 18 ), "idle", "jump", SubResource( 19 ), "jump", "falling", SubResource( 20 ), "falling", "landing", SubResource( 21 ), "landing", "idle", SubResource( 22 ), "idle", "hit", SubResource( 23 ), "hit", "idle", SubResource( 24 ) ]
 start_node = "idle"
 graph_offset = Vector2( -281.638, -132.31 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
 [node name="solo_part" type="KinematicBody2D" groups=[
 "player",
@@ -145,7 +144,6 @@ script = ExtResource( 1 )
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 rotation = 1.16415e-10
-scale = Vector2( 1, 1 )
 enabled = true
 cast_to = Vector2( 0, 6 )
 
@@ -154,19 +152,19 @@ position = Vector2( -0.940651, -34.6784 )
 rotation = 0.234037
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
-anims/falling = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/jump = SubResource( 5 )
-anims/landing = SubResource( 6 )
-anims/move = SubResource( 7 )
-anims/rest = SubResource( 8 )
+anims/attack = SubResource( 1 )
+anims/falling = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/landing = SubResource( 5 )
+anims/move = SubResource( 6 )
+anims/rest = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 23 )
+tree_root = SubResource( 25 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 24 )
+parameters/playback = SubResource( 26 )
 
 [node name="CameraOffset" type="Position2D" parent="."]
 rotation = 2.68881

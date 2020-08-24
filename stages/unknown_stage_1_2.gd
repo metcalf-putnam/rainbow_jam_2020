@@ -20,3 +20,7 @@ func _on_CrossroadsTrigger_body_entered(body):
 func _on_MiniGameTrigger_body_entered(body):
 	if body.is_in_group("player"):
 		Transition.change_scene("res://mini_games/tiffany/tiffany_game.tscn")
+
+
+func _on_ConvoTrigger_body_exited(body):
+	print("triggered!")
