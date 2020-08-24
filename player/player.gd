@@ -1,8 +1,8 @@
 extends Node2D
 
 
-export var speed = 250
-export var jump_speed = 500
+export var speed = 175
+export var jump_speed = 475
 export var gravity = 980
 var main_piece 
 var pieces = []

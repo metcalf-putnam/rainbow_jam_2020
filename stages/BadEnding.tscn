@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="BadEnding" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 250.0
+margin_top = 97.0
+margin_right = 300.0
+margin_bottom = 151.0
+rect_scale = Vector2( 10.4358, 7.32891 )
+color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.473
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "destroy"
 length = 1.25
 tracks/0/type = "value"
@@ -34,8 +34,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 3, 3 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "disappear"
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -50,8 +49,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
+[sub_resource type="Animation" id=4]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -107,9 +105,9 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/destroy = SubResource( 4 )
-anims/disappear = SubResource( 2 )
-anims/idle = SubResource( 3 )
+anims/destroy = SubResource( 2 )
+anims/disappear = SubResource( 3 )
+anims/idle = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0

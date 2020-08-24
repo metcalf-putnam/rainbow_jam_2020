@@ -20,6 +20,7 @@ func _on_memory_destroyed():
 
 
 func _on_deep_thought_finished():
+	create_memory()
 	$Timer.start()
 
 
