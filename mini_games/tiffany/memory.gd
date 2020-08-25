@@ -1,6 +1,6 @@
 extends Area2D
 class_name Memory
-var player_hit = false
+var hit = false
 var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
@@ -47,5 +47,10 @@ func _process(delta):
 
 
 func _on_Memory_area_entered(area):
-	if area.is_in_group("attack"):
+	if area.is_in_group("attack") and !hit:
 		disintegrate()
+		hit = true
+		
+
+func stop_timer():
+	$Timer.stop()

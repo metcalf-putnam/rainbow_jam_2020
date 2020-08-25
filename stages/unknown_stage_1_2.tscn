@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://stages/unknown_stage_1_2.gd" type="Script" id=1]
 [ext_resource path="res://unknown.tscn" type="PackedScene" id=2]
-[ext_resource path="res://solo_parts/solo_head/solo_head.tscn" type="PackedScene" id=3]
+[ext_resource path="res://solo_parts/solo_tentacle/solo_tentacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dialog/dialog_player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.3014, 25.3338 )
@@ -10,15 +11,21 @@ extents = Vector2( 17.3014, 25.3338 )
 [node name="unknown_stage_1_2" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
-[node name="solo_head" parent="." index="6" instance=ExtResource( 3 )]
-position = Vector2( 1751.65, 494.113 )
-scale = Vector2( -1, 1 )
+[node name="solo_tentacle" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 1673.46, 502.471 )
+rotation = -3.14042
+scale = Vector2( 1, -1 )
+script = null
 
 [node name="ConvoTrigger" type="Area2D" parent="." index="7"]
-position = Vector2( 1509.65, 431.875 )
+position = Vector2( 1510.87, 432.293 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConvoTrigger" index="0"]
 position = Vector2( 28.8446, -48.891 )
 scale = Vector2( 1.99128, 6.49102 )
 shape = SubResource( 1 )
+
+[node name="DialogPlayer" parent="." index="11" instance=ExtResource( 5 )]
+dialog_file = "res://dialog/dialog_data/frankie_meeting.json"
 [connection signal="body_exited" from="ConvoTrigger" to="." method="_on_ConvoTrigger_body_exited"]
+[connection signal="dialog_finished" from="DialogPlayer" to="." method="_on_DialogPlayer_dialog_finished"]

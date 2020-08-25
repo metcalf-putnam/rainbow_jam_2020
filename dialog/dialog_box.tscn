@@ -1,17 +1,21 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://dialog/dialog_box.gd" type="Script" id=1]
 [ext_resource path="res://fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/Adelle LightItalic.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Adelle Light.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://UI_layout2_guides.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 17
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
@@ -57,7 +61,8 @@ margin_right = 402.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 400, 0 )
 rect_clip_content = false
-custom_fonts/normal_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 1, 0.996078, 0.996078, 1 )
 bbcode_enabled = true
 bbcode_text = "[tornado radius = .5 freq = .5]ADA:    My text goes here. I have a lot [/tornado]"
@@ -73,7 +78,7 @@ margin_left = 452.0
 margin_right = 502.0
 margin_bottom = 23.0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": false

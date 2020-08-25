@@ -91,6 +91,7 @@ tracks/2/keys = {
 
 [node name="Memory" type="Area2D" groups=[
 "hazard",
+"memory",
 ]]
 collision_layer = 2
 collision_mask = 2147483649
@@ -109,7 +110,9 @@ anims/destroy = SubResource( 2 )
 anims/disappear = SubResource( 3 )
 anims/idle = SubResource( 4 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=[
+"memory",
+]]
 wait_time = 4.0
 autostart = true
 [connection signal="area_entered" from="." to="." method="_on_Memory_area_entered"]

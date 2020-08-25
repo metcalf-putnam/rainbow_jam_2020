@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "SoloPart",
+"class": "Arm",
+"language": "GDScript",
+"path": "res://solo_parts/solo_arm/solo_arm.gd"
+}, {
 "base": "Node2D",
 "class": "City",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://solo_parts/solo_part.gd"
 } ]
 _global_script_class_icons={
+"Arm": "",
 "City": "",
 "DialogPlayer": "",
 "Memory": "",

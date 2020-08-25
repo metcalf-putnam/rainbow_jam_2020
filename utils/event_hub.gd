@@ -3,6 +3,7 @@ extends Node
 
 # From Player/parts
 signal destruction
+signal hugged
 
 # From city
 signal health_changed
@@ -12,6 +13,7 @@ signal new_title
 signal memory_scene
 signal normal_scene
 signal ui_changed
+signal start_hug
 
 # From objects
 signal player_hit # From Tiffany mini game
