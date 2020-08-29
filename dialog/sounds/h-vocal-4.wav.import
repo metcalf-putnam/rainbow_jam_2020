@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/h-vocal-4.wav-e5c8a798dd8844175bfa00ef77a14ee4.sample"
+
+[deps]
+
+source_file="res://dialog/sounds/h-vocal-4.wav"
+dest_files=[ "res://.import/h-vocal-4.wav-e5c8a798dd8844175bfa00ef77a14ee4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

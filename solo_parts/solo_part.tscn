@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://solo_parts/solo_part.gd" type="Script" id=1]
 [ext_resource path="res://solo_parts/Camera2D.gd" type="Script" id=2]
@@ -76,64 +76,73 @@ animation = "falling"
 animation = "hit"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
-animation = "idle"
+animation = "hug"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
-animation = "jump"
+animation = "idle"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
-animation = "landing"
+animation = "jump"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
-animation = "move"
+animation = "landing"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "move"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
 states/attack/node = SubResource( 8 )
 states/attack/position = Vector2( 356, 149 )
 states/falling/node = SubResource( 9 )
 states/falling/position = Vector2( 83, 128 )
 states/hit/node = SubResource( 10 )
 states/hit/position = Vector2( 270.362, -34.3099 )
-states/idle/node = SubResource( 11 )
+states/hug/node = SubResource( 11 )
+states/hug/position = Vector2( 157.362, -28.31 )
+states/idle/node = SubResource( 12 )
 states/idle/position = Vector2( 255, 65 )
-states/jump/node = SubResource( 12 )
+states/jump/node = SubResource( 13 )
 states/jump/position = Vector2( 220, 174 )
-states/landing/node = SubResource( 13 )
+states/landing/node = SubResource( 14 )
 states/landing/position = Vector2( 97, 39 )
-states/move/node = SubResource( 14 )
+states/move/node = SubResource( 15 )
 states/move/position = Vector2( 452, 65 )
-transitions = [ "idle", "move", SubResource( 15 ), "move", "idle", SubResource( 16 ), "idle", "attack", SubResource( 17 ), "attack", "idle", SubResource( 18 ), "idle", "jump", SubResource( 19 ), "jump", "falling", SubResource( 20 ), "falling", "landing", SubResource( 21 ), "landing", "idle", SubResource( 22 ), "idle", "hit", SubResource( 23 ), "hit", "idle", SubResource( 24 ) ]
+transitions = [ "idle", "move", SubResource( 16 ), "move", "idle", SubResource( 17 ), "idle", "attack", SubResource( 18 ), "attack", "idle", SubResource( 19 ), "idle", "jump", SubResource( 20 ), "jump", "falling", SubResource( 21 ), "falling", "landing", SubResource( 22 ), "landing", "idle", SubResource( 23 ), "idle", "hit", SubResource( 24 ), "hit", "idle", SubResource( 25 ), "idle", "hug", SubResource( 26 ), "hug", "idle", SubResource( 27 ) ]
 start_node = "idle"
 graph_offset = Vector2( -281.638, -132.31 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
 [node name="solo_part" type="KinematicBody2D" groups=[
 "player",
@@ -161,16 +170,16 @@ anims/move = SubResource( 6 )
 anims/rest = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 25 )
+tree_root = SubResource( 28 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 26 )
+parameters/playback = SubResource( 29 )
 
 [node name="CameraOffset" type="Position2D" parent="."]
 rotation = 2.68881
 
 [node name="Camera2D" type="Camera2D" parent="CameraOffset"]
-position = Vector2( 3.05176e-05, 0 )
+position = Vector2( 4.80056, -9.89722 )
 smoothing_enabled = true
 drag_margin_left = 0.3
 drag_margin_top = 0.3
@@ -178,4 +187,9 @@ drag_margin_right = 0.3
 drag_margin_bottom = 0.3
 editor_draw_drag_margin = true
 script = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MoveSoundPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -30.0
 [connection signal="grounded_updated" from="." to="CameraOffset/Camera2D" method="_on_solo_part_grounded_updated"]

@@ -29,7 +29,7 @@ thought_3 = "not here..."
 wait_time = 10.0
 
 [node name="CoraConvo" type="Area2D" parent="." index="10"]
-position = Vector2( 576.003, 399.263 )
+position = Vector2( 652.371, 399.263 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoraConvo" index="0"]

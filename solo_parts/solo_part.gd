@@ -16,6 +16,8 @@ var _velocity = Vector2()
 var is_active = true
 var is_grounded
 const FLOOR_DETECT_DISTANCE = 20.0
+var move_sounds = []
+var move_index := 0
 
 
 func set_base_speed(base_speed, base_jump_speed, gravity_base):
@@ -52,11 +54,13 @@ func set_camera_current(boolean):
 
 
 func _ready():
+	EventHub.connect("start_hug", self, "hug")
 	$AnimationTree.active = true
 	animationState = $AnimationTree["parameters/playback"]
 	set_particles()
+	print("setting!")
 	EventHub.connect("change_player_active_state", self, "set_active")
-
+	
 
 func _input(event):
 	if event.is_action_pressed("ui_select"):
@@ -114,7 +118,16 @@ func get_new_animation():
 	else:
 		animation_new = "falling" if _velocity.y > 0 else "jump"
 	animationState.travel(animation_new)
+	if animation_new == "move" and !$MoveSoundPlayer.playing:
+		make_movement_sound()
 	return animation_new == "move"
+
+
+func make_movement_sound():
+	if move_sounds.size() > 0:
+		move_index = (move_index + 1) % move_sounds.size()
+		$MoveSoundPlayer.stream = move_sounds[move_index]
+		$MoveSoundPlayer.play()
 
 
 func calculate_move_velocity(
@@ -129,3 +142,13 @@ func calculate_move_velocity(
 	if is_jump_interrupted:
 		velocity.y = 0.0
 	return velocity
+	
+	
+func _on_hug_end():
+	EventHub.emit_signal("hugged")
+
+
+func hug():
+	set_physics_process(false)
+	set_active(false)
+	animationState.travel("hug")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kf019708-the-siren-27s-lament.ogg-cd738014b3528ce173e95111c584f2a8.oggstr"
+
+[deps]
+
+source_file="res://music/kf019708-the-siren-27s-lament.ogg"
+dest_files=[ "res://.import/kf019708-the-siren-27s-lament.ogg-cd738014b3528ce173e95111c584f2a8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

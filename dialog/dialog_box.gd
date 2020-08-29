@@ -11,6 +11,26 @@ var mode = Mode.NONE
 var t_text_speed := 10 # characters per second
 var dt_text_speed := 7
 var thought_wait_time = 3
+var end_vis
+var rng = RandomNumberGenerator.new()
+#const vocals = [
+#	preload("res://dialog/sounds/tiffany/h-vocal-1.wav"),
+#	preload("res://dialog/sounds/tiffany/h-vocal-2.wav"),
+#	preload("res://dialog/sounds/tiffany/h-vocal-3.wav"),
+#	preload("res://dialog/sounds/h-vocal-5.wav"),
+#	preload("res://dialog/sounds/h-vocal-6.wav"),
+#	preload("res://dialog/sounds/h-vocal-7.wav")
+#]
+
+const vocals = [
+	preload("res://dialog/sounds/h-vocal-1.wav"),
+	preload("res://dialog/sounds/h-vocal-2.wav"),
+	preload("res://dialog/sounds/h-vocal-3.wav"),
+	preload("res://dialog/sounds/h-vocal-4.wav"),
+	preload("res://dialog/sounds/h-vocal-5.wav"),
+	preload("res://dialog/sounds/h-vocal-6.wav"),
+	preload("res://dialog/sounds/h-vocal-7.wav")
+]
 
 signal cleared_text
 
@@ -36,7 +56,6 @@ func _set_normal_theme():
 
 
 func reset_text_label():
-	print("resetting")
 	$Timer.stop()
 	$Tween.stop_all()
 	$h/Text.percent_visible = 0
@@ -45,21 +64,21 @@ func reset_text_label():
 
 
 func show_thought(thought : String):
-	print("showing thought")
 	reset_text_label()
 	mode = Mode.THOUGHT
 	$h/Button.hide()
 
 	$h/Text.bbcode_text = t_PREFIX + thought + t_SUFFIX
+	set_pitch_and_db()
 	animate_text(0, thought.length())
 	show()
 
 
 func show_deep_thought(thought : String):
-	print("showing deep thought")
 	EventHub.emit_signal("change_player_active_state", false)
 	reset_text_label()
 	mode = Mode.DEEPTHOUGHT
+	set_pitch_and_db()
 	$h/Button.hide()
 	animate_text(0, thought.length())
 	$h/Text.bbcode_text = dt_PREFIX + thought + dt_SUFFIX
@@ -67,7 +86,6 @@ func show_deep_thought(thought : String):
 
 
 func show_dialog(dialog):
-	print("showing dialogue")
 	reset_text_label()
 	EventHub.emit_signal("change_player_active_state", false)
 	mode = Mode.DIALOGUE
@@ -93,16 +111,19 @@ func _on_dialog_finished():
 
 
 func _on_Button_pressed():
-	if $Tween.is_active():
-		$Tween.stop_all()
-		$h/Text.percent_visible = 1
-	else:
+	if $h/Text.visible_characters == -1 or $h/Text.visible_characters >= end_vis:
+		print("going to next")
 		dialog_node.next_dialog()
 		_format_dialog()
+	else:
+		print("tween active")
+		$Tween.stop_all()
+		$h/Text.percent_visible = 1
 
 
 func _format_dialog():
 	var name_prefix = dialog_node.dialog_name.to_upper() + SPACER
+	set_pitch_and_db(name_prefix)
 	animate_text(len(name_prefix), len(name_prefix + dialog_node.dialog_text))
 	$h/Text.bbcode_text = (t_PREFIX + name_prefix + dialog_node.dialog_text + t_SUFFIX)
 
@@ -124,10 +145,11 @@ func _input(event):
 		return
 		
 	if $Tween.is_active():
+		print("tween active")
 		$Tween.stop_all()
 		$h/Text.percent_visible = 1	
-		print("making visible")
 	else:
+		print("ending deep thought")
 		_end_deep_thought()
 		mode = Mode.NONE
 
@@ -145,17 +167,57 @@ func _end_deep_thought():
 	mode = Mode.NONE
 
 
-func animate_text(start_vis, end_vis):
+func animate_text(start_vis, end_vis_in):
+	end_vis = end_vis_in
 	var speed = t_text_speed
 	if mode == Mode.DEEPTHOUGHT:
 		speed = dt_text_speed
 		yield(get_tree().create_timer(.5), "timeout")
 	var duration = (end_vis - start_vis) / speed
 	if mode == Mode.THOUGHT:
-		print("starting timer for: ", str(thought_wait_time + duration))
 		$Timer.start(thought_wait_time + duration)
-		print($Timer.get_time_left())
 	var tween = get_node("Tween")
 	tween.interpolate_property($h/Text, "visible_characters", 
 			start_vis, end_vis, duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
+	vocalize()
+	
+	
+func set_pitch_and_db(name = ""):
+	var pitch = 1
+	var volume = 0
+	print("name: ", name)
+	match mode:
+		Mode.DEEPTHOUGHT:
+			pitch = 0.6
+			volume = -10
+		Mode.DIALOGUE:
+			if name.to_lower().begins_with("tiffany"):
+				pitch = 3
+			elif name.to_lower().begins_with("frankie"):
+				pitch = 2
+				print("frankie!")
+			elif name.to_lower().begins_with("cora"):
+				pitch = 0.9
+			elif name.to_lower().begins_with("voice"):
+				pitch = 0.9
+			elif name.to_lower().begins_with("tifra"):
+				pitch = 2.5
+			elif name.to_lower().begins_with("frada"):
+				pitch = 1.5
+	$AudioStreamPlayer.pitch_scale = pitch
+	$AudioStreamPlayer.volume_db = volume
+	
+func vocalize():
+	if end_vis == -1 or mode == Mode.NONE or mode == Mode.THOUGHT:
+		return
+	var index = rng.randi_range(0, vocals.size() - 1)
+	$AudioStreamPlayer.stream  = vocals[index]
+	$AudioStreamPlayer.play()
+
+
+func _on_AudioStreamPlayer_finished():
+	if end_vis == -1 or mode == Mode.NONE or mode == Mode.THOUGHT:
+		return
+	if $h/Text.visible_characters < end_vis - 3:
+		vocalize()

@@ -9,12 +9,11 @@
 [ext_resource path="res://solo_parts/solo_tentacle/Asset_Tentacle6 (tip_bottomlayer).png" type="Texture" id=7]
 [ext_resource path="res://solo_parts/solo_part.tscn" type="PackedScene" id=8]
 
-[sub_resource type="CapsuleShape2D" id=14]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 15.5223
 height = 54.2359
 
-[sub_resource type="Animation" id=1]
-resource_name = "attack"
+[sub_resource type="Animation" id=2]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -129,14 +128,12 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1.5 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "falling"
+[sub_resource type="Animation" id=3]
 length = 0.001
 
-[sub_resource type="Animation" id=3]
-resource_name = "hit"
-
 [sub_resource type="Animation" id=4]
+
+[sub_resource type="Animation" id=5]
 length = 1.5
 loop = true
 tracks/0/type = "value"
@@ -248,8 +245,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "jump"
+[sub_resource type="Animation" id=6]
 length = 1.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites/base/sec/third/r_fourth:rotation_degrees")
@@ -360,8 +356,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.8 ), Vector2( 1, 1 ), Vector2( 1.2, 0.9 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "landing"
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites/base/sec/third/r_fourth:rotation_degrees")
@@ -460,7 +455,7 @@ tracks/7/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -548,7 +543,7 @@ tracks/6/keys = {
 "values": [ Vector2( 1.1, 0.9 ), Vector2( 0.85, 1.2 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprites:position")
 tracks/0/interp = 1
@@ -574,9 +569,9 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=11]
 script/source = "extends Camera2D
 
 
@@ -584,7 +579,7 @@ func _on_solo_part_grounded_updated(is_grounded):
 	drag_margin_v_enabled = !is_grounded
 "
 
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 33.2854
 height = 17.7439
 
@@ -592,8 +587,8 @@ height = 17.7439
 script = ExtResource( 2 )
 
 [node name="tip" type="Sprite" parent="." index="1"]
-position = Vector2( 137.993, -48.7096 )
-rotation = 1.45857
+position = Vector2( 136.703, -51.9248 )
+rotation = 1.47034
 texture = ExtResource( 7 )
 offset = Vector2( -6.10277, -27.5903 )
 __meta__ = {
@@ -607,18 +602,17 @@ position = Vector2( -3.03794, -52.4833 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tip/MemoryDetector" index="0"]
 position = Vector2( -3.47284, 27.6908 )
-shape = SubResource( 14 )
+shape = SubResource( 1 )
 
 [node name="5" type="Sprite" parent="." index="2"]
-position = Vector2( 65.5368, -1.96192 )
-rotation = 1.379
+position = Vector2( 65.582, -3.16999 )
+rotation = 1.35105
 texture = ExtResource( 5 )
 offset = Vector2( -12.4123, -32.8499 )
 
 [node name="4" type="Sprite" parent="." index="3"]
-position = Vector2( 15.3336, -24.4996 )
-rotation = 1.20295
-scale = Vector2( 1, 1 )
+position = Vector2( 15.1296, -25.1443 )
+rotation = 1.19176
 texture = ExtResource( 4 )
 offset = Vector2( 5.53086, -13.738 )
 
@@ -628,7 +622,7 @@ rotation = 0.0331355
 
 [node name="base" type="Sprite" parent="sprites" index="0"]
 position = Vector2( 0.386969, -2.38124 )
-rotation = 1.79865
+rotation = 1.78655
 texture = ExtResource( 6 )
 offset = Vector2( -2.99392, -38.3766 )
 __meta__ = {
@@ -637,7 +631,7 @@ __meta__ = {
 
 [node name="sec" type="Sprite" parent="sprites/base" index="0"]
 position = Vector2( -23.7768, -67.9455 )
-rotation = -0.404004
+rotation = -0.394324
 texture = ExtResource( 3 )
 offset = Vector2( 6.429, -19.6286 )
 __meta__ = {
@@ -646,7 +640,7 @@ __meta__ = {
 
 [node name="third" type="Sprite" parent="sprites/base/sec" index="0"]
 position = Vector2( 3.03847, -33.3557 )
-rotation = -0.150573
+rotation = -0.14164
 texture = ExtResource( 1 )
 offset = Vector2( 8.23842, -19.0435 )
 __meta__ = {
@@ -655,7 +649,7 @@ __meta__ = {
 
 [node name="r_fourth" type="RemoteTransform2D" parent="sprites/base/sec/third" index="0"]
 position = Vector2( 32.2151, -38.9236 )
-rotation = -0.0742553
+rotation = -0.0919699
 remote_path = NodePath("../../../../../4")
 __meta__ = {
 "_edit_bone_": true
@@ -663,7 +657,7 @@ __meta__ = {
 
 [node name="r_fifth" type="RemoteTransform2D" parent="sprites/base/sec/third/r_fourth" index="0"]
 position = Vector2( 39.0835, -38.7401 )
-rotation = 0.176056
+rotation = 0.159291
 remote_path = NodePath("../../../../../../5")
 __meta__ = {
 "_edit_bone_": true
@@ -671,7 +665,7 @@ __meta__ = {
 
 [node name="r_tip" type="RemoteTransform2D" parent="sprites/base/sec/third/r_fourth/r_fifth" index="0"]
 position = Vector2( -32.0789, -80.039 )
-rotation = 0.0795706
+rotation = 0.119293
 remote_path = NodePath("../../../../../../../tip")
 __meta__ = {
 "_edit_bone_": true
@@ -682,22 +676,23 @@ position = Vector2( -1.05361, -54.9613 )
 rotation = 0.27843
 
 [node name="AnimationPlayer" parent="." index="5"]
-anims/attack = SubResource( 1 )
-anims/falling = SubResource( 2 )
-anims/hit = SubResource( 3 )
-anims/idle = SubResource( 4 )
-anims/jump = SubResource( 5 )
-anims/landing = SubResource( 6 )
-anims/move = SubResource( 7 )
-anims/rest = SubResource( 8 )
+anims/attack = SubResource( 2 )
+anims/falling = SubResource( 3 )
+anims/hit = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/jump = SubResource( 6 )
+anims/landing = SubResource( 7 )
+anims/move = SubResource( 8 )
+anims/rest = SubResource( 9 )
 
 [node name="AnimationTree" parent="." index="6"]
-parameters/playback = SubResource( 9 )
+active = false
+parameters/playback = SubResource( 10 )
 
 [node name="Camera2D" parent="CameraOffset" index="0"]
 offset = Vector2( 0, -60 )
 zoom = Vector2( 1.5, 1.5 )
-script = SubResource( 13 )
+script = SubResource( 11 )
 
 [node name="Position2D" type="Position2D" parent="." index="8"]
 position = Vector2( 2.97494, 277.576 )
@@ -705,4 +700,4 @@ position = Vector2( 2.97494, 277.576 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="9"]
 position = Vector2( -0.0282102, -24 )
 rotation = 1.5708
-shape = SubResource( 11 )
+shape = SubResource( 12 )

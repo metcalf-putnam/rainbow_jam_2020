@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://unknown.tscn" type="PackedScene" id=1]
+[ext_resource path="res://stages/unknown_stage_3_1.gd" type="Script" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dialog/thought_trigger.tscn" type="PackedScene" id=4]
+
+[node name="unknown_stage_3_1" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Player" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 4145.67, 158.38 )
+
+[node name="ThoughtTrigger" parent="." index="15" instance=ExtResource( 4 )]
+position = Vector2( 3717.94, 243.754 )
+thought = "TIFFANY:    Now we can make them listen"
+
+[node name="ThoughtTrigger2" parent="." index="16" instance=ExtResource( 4 )]
+position = Vector2( 1910.72, 292.664 )
+thought = "FRANKIE:   We can find the path"
+
+[node name="ThoughtTrigger3" parent="." index="17" instance=ExtResource( 4 )]
+position = Vector2( 150.701, 279.194 )
+thought = "ADA:    We can make them pay"
+
+[node name="ThoughtTrigger4" parent="." index="18" instance=ExtResource( 4 )]
+position = Vector2( -1407.28, 265.725 )
+thought = "TIFRA:   We can do anything"

@@ -14,6 +14,12 @@ signal memory_scene
 signal normal_scene
 signal ui_changed
 signal start_hug
+signal tentacle_touch
+signal town_destroyed
+signal town_halved
+signal town_quartered
+signal bad_ending
+signal good_ending
 
 # From objects
 signal player_hit # From Tiffany mini game

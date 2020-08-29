@@ -9,3 +9,8 @@ func change_scene(scene_path : String):
 	
 func get_ui_state():
 	return $UI_Layer.state
+	
+
+func fade_to_black():
+	print("fading")
+	$AnimationPlayer.play("fade")

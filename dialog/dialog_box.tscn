@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://dialog/dialog_box.gd" type="Script" id=1]
 [ext_resource path="res://fonts/SpecialElite-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/Adelle LightItalic.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/Adelle Light.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://dialog/sounds/h-vocal-7.wav" type="AudioStream" id=5]
 [ext_resource path="res://UI_layout2_guides.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -89,6 +90,8 @@ wait_time = 5.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogBox"]
+stream = ExtResource( 5 )
+pitch_scale = 3.0
 
 [node name="Tween" type="Tween" parent="DialogBox"]
 
@@ -100,3 +103,4 @@ scale = Vector2( 0.24, 0.24 )
 texture = ExtResource( 6 )
 [connection signal="pressed" from="DialogBox/h/Button" to="DialogBox" method="_on_Button_pressed"]
 [connection signal="timeout" from="DialogBox/Timer" to="DialogBox" method="_on_Timer_timeout"]
+[connection signal="finished" from="DialogBox/AudioStreamPlayer" to="DialogBox" method="_on_AudioStreamPlayer_finished"]

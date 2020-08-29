@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ui_assets/Asset_Cross White.png" type="Texture" id=1]
 [ext_resource path="res://ui_assets/Asset_ButtonDefault White.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://environment/the_unknown/Asset_UnknownPebbles.png" type="Texture" id=5]
 [ext_resource path="res://UI_layout2_guides.png" type="Texture" id=6]
 [ext_resource path="res://dialog/dialog_box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://utils/music.gd" type="Script" id=8]
+[ext_resource path="res://music/kf022004-ghost-stories.ogg" type="AudioStream" id=9]
+[ext_resource path="res://music/kf027803-don-27t-look-back.ogg" type="AudioStream" id=10]
+[ext_resource path="res://music/kf019708-the-siren-27s-lament.ogg" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 17
@@ -286,4 +290,25 @@ anims/to_memory = SubResource( 2 )
 anims/to_normal = SubResource( 3 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
+
+[node name="Asset_UnknownPebbles4" type="Sprite" parent="."]
+visible = false
+position = Vector2( 510, 422 )
+scale = Vector2( 0.5, 0.4 )
+texture = ExtResource( 5 )
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="Normal" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 9 )
+
+[node name="Memory" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 11 )
+
+[node name="HappyEnding" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 10 )
+
+[node name="Tween" type="Tween" parent="Music"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="tween_all_completed" from="Music/Tween" to="Music" method="_on_Tween_tween_all_completed"]

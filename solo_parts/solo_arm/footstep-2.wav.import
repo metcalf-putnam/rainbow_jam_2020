@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/footstep-2.wav-ae8a432d58383c89e1d4b7a943c026d9.sample"
+
+[deps]
+
+source_file="res://solo_parts/solo_arm/footstep-2.wav"
+dest_files=[ "res://.import/footstep-2.wav-ae8a432d58383c89e1d4b7a943c026d9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

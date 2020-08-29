@@ -12,7 +12,7 @@ position = Vector2( -135.141, -32.785 )
 rotation = 0.02835
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 277.076, -24.8296 )
+position = Vector2( 277.076, -24.8297 )
 rotation = 1.31786
 scale = Vector2( 1, 1 )
 texture = ExtResource( 6 )

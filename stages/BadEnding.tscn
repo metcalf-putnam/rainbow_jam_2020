@@ -1,6 +1,17 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/Adelle Light.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://stages/bad_ending.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = 7
+font_data = ExtResource( 1 )
 
 [node name="BadEnding" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 250.0
@@ -14,8 +25,14 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 323.888
+margin_top = 193.66
+margin_right = 723.888
+margin_bottom = 393.66
+custom_fonts/normal_font = SubResource( 1 )
+text = "The monster knew she could never be truly strong with a weak heart like that, so she ripped the heart out with her own hand and locked it away, high up in a tower where it could never be found."
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]

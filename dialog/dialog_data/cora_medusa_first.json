@@ -1,0 +1,11 @@
+{
+  "1" : {"name": "Voice from above", "text": "Please, if you ever cared for me or this city, you will leave now"},
+  "2" : {"name": "Tiffany", "text": "Cora?"},
+  "3" : {"name": "Cora", "text": "Please, all of you, just leave"},
+  "4" : {"name": "Frankie", "text": "That's right, you're Cora. You're part of us too!"},
+  "5" : {"name": "Ada", "text": "We belong together! Help us destroy this city."},
+  "6" : {"name": "cora", "text": "You don't even remember, do you? All you have left in you is destruction"}, 
+  "7" : {"name": "Ada", "text": "We only destroy those who wrong us."},
+  "8" : {"name": "cora", "text": "I can't be a part of that. Leave, or...you'll be sorry again."}, 
+  "9" : {"name": "Tifra", "text": "That sounds like a threat"},
+}

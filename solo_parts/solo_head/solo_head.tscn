@@ -303,7 +303,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
 [sub_resource type="CapsuleShape2D" id=10]
-radius = 67.2323
+radius = 53.2537
 height = 47.6974
 
 [node name="solo_head" instance=ExtResource( 1 )]
